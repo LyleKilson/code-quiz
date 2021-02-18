@@ -10,7 +10,7 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 * Javascript
 
 ## Preview
-![alt text](lylkilson/code-quiz/assets/images/screen-shot.png?raw=true "Title")
+![plot](./assets/images/screen-shot.png?raw=true "Title")
 
 ## Website
 https://LyleKilson.github.io/code-quiz/
