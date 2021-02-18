@@ -9,6 +9,9 @@ A timed coding quiz with multiple-choice questions. This app will run in the bro
 * CSS
 * Javascript
 
+## Preview
+![alt text](https://github.com/lylkilson/code-quiz/assets/images/screen-shot.png/raw=true)
+
 ## Website
 https://LyleKilson.github.io/code-quiz/
 
