@@ -1,8 +1,7 @@
 # Code Quiz 🤓
 
 ## Purpose
-A timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code. It will have a clean, polished, and responsive user interface.
-
+Code Quiz is a timed multiple-choice knowledge check web aplication. This app runs in the browser, and features dynamically updated HTML, CSS, and is powered by JavaScript. It has a clean, polished, and responsive user interface.
 
 ## Built With
 * HTML
