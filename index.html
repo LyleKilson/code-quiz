@@ -11,48 +11,25 @@
   <body>
     <header>
       <!--displays active timer-->
-      <div class="highscore">
-        <h4>High Score</h4>
+      <div>
+        <h4 class="flex">High Score</h4>
       </div>
       <!--title and logo-->
       <div class="title-logo">
         <img id="logo" src="./assets/images/logo.png" />
-        <h1 class="title">JavaScript Knowledge Check</h1>
+        <h1 class="title">JavaScript Quiz</h1>
       </div>
       <!--displays current high score-->
-      <div class="timer">
-        <h4>Time Left:</h4>
-        <span></span>
+      <div>
+        <h4 class="flex">Time Left:<span id="timeLeft">90</span>
+        </h4>
       </div>
     </header>
     <!--main body-->
-    <main>
-      <div class="intro-title">
-        <h2>Do I have to?</h2>
-        <img id="frowny" src="./assets/images/frowning-face.png" />
-      </div>
-      <div class="discription">
-        <p>
-          No I guess not (eyeroll), but hear me out. Coding assessments are an
-          important part of the interview process for developers. In fact,
-          employers often use them to filter out job candidates with a cut-off
-          score. To help you prepare, I've developed a set of technical
-          interview questions in this short timed quiz. If you take advantage of
-          these opportunities to practice and learn, you should be well-prepared
-          to shine during the technical interview process toward becoming a
-          Full-Stack Web Developer!
-        </p>
-        <h3>You're welcome...</h3>
-
-        <p></p>
-        <p>To get started smash the button below!</p>
-      </div>
-      <button>Let's Go!</button>
+    <main class="quizBody">
+        <p>To get the quiz going smash the button below!</p>
+      <button>Lets go!</button>
     </main>
-    <footer>
-      <h2>Made with big 🧠 's by Kyle Wilson</h2>
-      <h4>&copy; 2021 code-quiz</h4>
-    </footer>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

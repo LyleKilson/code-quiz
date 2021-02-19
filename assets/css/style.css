@@ -22,11 +22,18 @@ header h4 {
   padding: 8px;
 }
 
+.flex {
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+}
+
 .title-logo {
   display: flex;
   padding: 15px 30px;
-  border-bottom: #c5c3c6 solid;
-  border-width: 1px;
+  border-bottom: #c5c3c6 solid 1px;
 }
 
 .title {
@@ -34,15 +41,19 @@ header h4 {
   padding-left: 5px;
 }
 
+#timeLeft {
+  font-size: 30px;
+  margin: 10px;
+}
+
 main {
-  margin: 60px 250px;
+  margin: 250px 250px;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  line-height: 1.9;
-  border: 2px solid #2a77aa;
-  border-radius: 15px;
+  align-items: center;
+  height: 100%
 }
 
 .intro-title {
@@ -53,7 +64,7 @@ main {
   border-width: 1px;
 }
 
-.discription {
+.quizBody {
   display: flex;
   flex-wrap: wrap;
   padding-top: 10px;
@@ -85,12 +96,4 @@ button:hover {
 #logo {
   height: 40px;
   width: auto;
-}
-
-footer {
-  background: #2a77aa;
-  padding: 40px 35px;
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
 }
