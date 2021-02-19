@@ -41,42 +41,26 @@ header h4 {
   padding-left: 5px;
 }
 
-#timeLeft {
+#timer {
   font-size: 30px;
   margin: 10px;
 }
 
-main {
-  margin: 250px 250px;
-  padding: 10px;
+#quizSection {
+  margin: 250px 200px;
+  color: #2a77aa;
+  font-size: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  height: 100%
-}
-
-.intro-title {
-  display: flex;
-  padding: 5px;
-  padding: 3px 30px;
-  border-bottom: #c5c3c6 solid;
-  border-width: 1px;
-}
-
-.quizBody {
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 10px;
-  flex-direction: column;
   text-align: center;
 }
 
-.discription h3 {
-  margin: 20px;
-}
-
-button {
+#button {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
   color: #2a77aa;
   background-color: #ffdd58;
   padding: 10px;
@@ -92,7 +76,6 @@ button:hover {
   opacity: 0.8;
 }
 
-#frowny,
 #logo {
   height: 40px;
   width: auto;
