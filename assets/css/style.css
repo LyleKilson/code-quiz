@@ -47,7 +47,7 @@ header h4 {
 }
 
 #quizSection {
-  margin: 250px 200px;
+  margin: 100px auto;
   color: #2a77aa;
   font-size: 30px;
   display: flex;
@@ -56,10 +56,7 @@ header h4 {
   text-align: center;
 }
 
-#button {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.button {
   text-align: center;
   color: #2a77aa;
   background-color: #ffdd58;
@@ -70,6 +67,17 @@ header h4 {
   font-size: 30px;
   box-shadow: 1px 2px;
   outline: none;
+}
+
+#name {
+  width: 250px;
+  height: 55px;
+  border: #2a77aa solid 2px;
+  color: #2a77aa;
+  border-radius: 15px;
+  font-size: 30px;
+  outline: none;
+  text-align: center;
 }
 
 button:hover {

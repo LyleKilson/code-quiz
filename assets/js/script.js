@@ -1,17 +1,18 @@
 // Variable for start button
-var startBtn = document.querySelector("button");
+var btnClick = document.querySelector("button");
+var startBtn = document.querySelector("#button");
+var displayQuestion = document.getElementById("questionBody");
 
 // Time and score variables
-var score = 0;
+var score = [];
 var timeLeft = 0;
-var currentQuestion = 0;
-var timer;
+var currentQuestion = -1;
 
 //Arrray of questionsArr and answers
 var questionsArr = [
   {
     question: "Inside which HTML element do we put the JavaScript?",
-    choices: ["<script>", "<js>", "<javascript>", "<scripting"],
+    choices: ["<script>", "<js>", "<javascript>", "<scripting>"],
     answer: "<script>",
   },
   {
@@ -19,7 +20,6 @@ var questionsArr = [
     choices: [
       "The <body> section",
       "The <head> section",
-      "Both the <head> section and the <body section are correct.",
       "The <footer> section",
     ],
     answer: "The <body> section",
@@ -63,21 +63,47 @@ function startQuiz() {
       document.getElementById("timer").innerHTML = "0";
       endQuiz();
     }
-  }, 100);
+  }, 1000);
+  var removeStartBtn = document.getElementById("button");
+  removeStartBtn.remove();
   startQuestions();
 }
 
 var startQuestions = function () {
-  var displayQuestion = document.getElementById("questionBody");
-  displayQuestion.innerHTML = questionsArr[currentQuestion].question;
-  var dispalyChoices = document.getElementById("button");
-  dispalyChoices.textContent= questionsArr[currentQuestion].choices;
+  currentQuestion++;
+
+  if (currentQuestion > 4) {
+    endQuiz();
+  } else {
+    displayQuestion.innerHTML = questionsArr[currentQuestion].question;
+    createChoicesBtns();
+  }
+};
+
+var createChoicesBtns = function () {
+  var btnsDiv = document.createElement("div");
+
+  for (var i = 0; i < questionsArr[currentQuestion].choices.length; i++) {
+    var choicesBtn = document.createElement("button");
+    choicesBtn.setAttribute("onclick", "startQuestions()");
+    choicesBtn.className = "button";
+    choicesBtn.textContent = questionsArr[currentQuestion].choices[i];
+    btnsDiv.appendChild(choicesBtn);
+  }
+  displayQuestion.append(btnsDiv);
+};
+
+var endQuiz = function () {
+  clearInterval(timer);
+
+  displayQuestion.innerHTML =
+    "<h2>Game Over!</h2> <h3>You got a score of + + /100! <div><input type=text id='name' placeholder='First Name'><button class='button' id='scoreBtn' onclick='saveScore()'>Submit Score</button></div>";
+};
+
+var saveScore = function () {
+    
 };
 
 //Button click to call startQuiz()
+btnClick.addEventListener("click", startQuestions);
 startBtn.addEventListener("click", startQuiz);
-
-//if ( currentQuestion < questionsArr.length) {
-//currentQuestion++;
-
-//document.getElementById("quizBody").innerHTML = "<span>" + questionsArr[0].question + "</span>";
