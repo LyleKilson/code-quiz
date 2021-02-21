@@ -11,8 +11,8 @@
   <body>
     <header>
       <!--displays active timer-->
-      <div>
-        <h4 class="flex">High Score</h4>
+      <div class="flexContainer">
+        <h4>Highscore:</h4><span id="scoreLeaderName">N/A</span><span id="scoreLeaderScore"></span>
       </div>
       <!--title and logo-->
       <div class="title-logo">
@@ -20,14 +20,13 @@
         <h1 class="title">JavaScript Quiz</h1>
       </div>
       <!--displays current high score-->
-      <div>
-        <h4 class="flex">Time Left:<span id="timer">90</span></h4>
+      <div class="flexContainer">
+        <h4>Time Left:</h4><span id="timer">60</span>
       </div>
     </header>
     <!--main body-->
     <main id="quizSection">
-      <div id="questionBody"></div>
-      <button class="button" id="button">Get Started!</button>
+      <button class="button" id="startBtn">Get Started!</button>
     </main>
     <script src="./assets/js/script.js"></script>
   </body>
