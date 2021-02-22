@@ -1,9 +1,7 @@
 // Variable for start button
-var btnClick = document.querySelector("button");
 var startBtn = document.querySelector("#startBtn");
 var displayQuestion = document.getElementById("quizSection");
-var displayScoreLeaderName= document.getElementById("scoreLeaderName");
-var displayScoreLeaderScore = document.getElementById("scoreLeaderScore")
+var displayScoreAndName = document.getElementById("score-name-input");
 
 // Time and score variables
 var score = 0;
@@ -56,16 +54,14 @@ var questionsArr = [
 
 //Function to display the score leader on page load
 window.onload = function () {
-  var highscoreInputName = localStorage.getItem("highscoreInput");
-  var highscoreInputScore = localStorage.getItem("highscore");
+  var scoreAndNameInput = localStorage.getItem("score-name-input");
 
-  if (highscoreInputName === null && highscoreInputScore === null) {
-    displayScoreLeaderName.textContent ="N/A";
+  if (!scoreAndNameInput) {
+    displayScoreAndName.textContent = "N/A";
   } else {
-    displayScoreLeaderName.textContent = highscoreInputName; 
-    displayScoreLeaderScore.textContent = highscoreInputScore;
-  };
-}
+    displayScoreAndName.textContent = scoreAndNameInput;
+  }
+};
 
 //Function to start the quiz
 function startQuiz() {
@@ -82,32 +78,48 @@ function startQuiz() {
 
   startBtn.remove();
   startQuestions();
-};
+}
 
 //Function to dispaly questions after quiz has started
 var startQuestions = function () {
   currentQuestion++;
 
-  if (currentQuestion > 4) {
-    endQuiz();
-  } else {
+  if (currentQuestion < questionsArr.length) {
     displayQuestion.innerHTML = questionsArr[currentQuestion].question;
     createChoicesBtns();
+  } else {
+    endQuiz();
   }
 };
 
 //Function to dispaly multipul choices for current question
 var createChoicesBtns = function () {
   var btnsDiv = document.createElement("div");
-  
+  //console.log(btnsDiv.value);
+
   for (var i = 0; i < questionsArr[currentQuestion].choices.length; i++) {
     var choicesBtn = document.createElement("button");
-    choicesBtn.setAttribute("onclick", "startQuestions()");
     choicesBtn.className = "button";
     choicesBtn.textContent = questionsArr[currentQuestion].choices[i];
     btnsDiv.appendChild(choicesBtn);
+    displayQuestion.append(btnsDiv);
+    choicesBtn.setAttribute("onclick", "answerVerify(questionsArr[currentQuestion].answer, event.target.textContent)");
+  };
+};
+
+function answerVerify(answer,userChoice) {
+  if (answer == userChoice) {
+    score = score + 20;
+  } else {
+    incorrect();
   }
-  displayQuestion.append(btnsDiv);
+  console.log(score);
+  startQuestions();
+};
+
+var incorrect = function() {
+  timeLeft -= 15; 
+  return;
 };
 
 //Function to end the quiz
@@ -115,15 +127,16 @@ var endQuiz = function () {
   clearInterval(timer);
 
   displayQuestion.innerHTML =
-    "<h2>Game Over!</h2><h3>You got a score of " + timeLeft + "/100!</h3><div><input type=text id='name' placeholder='Enter Name Here'><button class='button' id='scoreBtn' onclick='saveScore()'>Submit Score</button></div>";
+    "<h2>Game Over!</h2><h3>You got a score of " +
+    score +
+    "/100!</h3><div><input type=text id='name' placeholder='Enter Initials Here'><button class='button' id='scoreBtn' onclick='saveScore()'>Submit Score</button></div>";
 };
 
 //Function save score to local storage
 var saveScore = function () {
-  localStorage.setItem("highscoreInput", document.getElementById("name").value);
-  localStorage.setItem("highscore", score);
+  localStorage.setItem("score-name-input", document.getElementById("name").value + " " + score);
+  location.reload();
 };
 
 //Button click to call startQuiz()
-btnClick.addEventListener("click", startQuestions);
 startBtn.addEventListener("click", startQuiz);
