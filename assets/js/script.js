@@ -69,9 +69,9 @@ function startQuiz() {
   timer = setInterval(function () {
     document.getElementById("timer").innerHTML = timeLeft;
     timeLeft--;
-    if (timeLeft === 0) {
+    if (timeLeft <= 0) {
       clearInterval(timer);
-      document.getElementById("timer").innerHTML = "0";
+      document.getElementById("timer").textContent = "0";
       endQuiz();
     }
   }, 1000);
@@ -81,10 +81,10 @@ function startQuiz() {
 }
 
 //Function to dispaly questions after quiz has started
-var startQuestions = function () {
+function startQuestions() {
   currentQuestion++;
 
-  if (currentQuestion < questionsArr.length) {
+  if (currentQuestion < questionsArr.length && timeLeft > 0) {
     displayQuestion.innerHTML = questionsArr[currentQuestion].question;
     createChoicesBtns();
   } else {
@@ -93,9 +93,9 @@ var startQuestions = function () {
 };
 
 //Function to dispaly multipul choices for current question
-var createChoicesBtns = function () {
+function createChoicesBtns() {
   var btnsDiv = document.createElement("div");
-  //console.log(btnsDiv.value);
+  console.log(score);
 
   for (var i = 0; i < questionsArr[currentQuestion].choices.length; i++) {
     var choicesBtn = document.createElement("button");
@@ -107,24 +107,25 @@ var createChoicesBtns = function () {
   };
 };
 
+//function to see if the answer is correct
 function answerVerify(answer,userChoice) {
   if (answer == userChoice) {
     score = score + 20;
   } else {
     incorrect();
   }
-  console.log(score);
   startQuestions();
 };
 
+//Function subtract time
 var incorrect = function() {
   timeLeft -= 15; 
   return;
 };
 
 //Function to end the quiz
-var endQuiz = function () {
-  clearInterval(timer);
+function endQuiz() {
+  timeLeft = 0;
 
   displayQuestion.innerHTML =
     "<h2>Game Over!</h2><h3>You got a score of " +
@@ -133,8 +134,8 @@ var endQuiz = function () {
 };
 
 //Function save score to local storage
-var saveScore = function () {
-  localStorage.setItem("score-name-input", document.getElementById("name").value + " " + score);
+function saveScore() {
+  localStorage.setItem("score-name-input", document.getElementById("name").value + " " + score+"pts");
   location.reload();
 };
 
