@@ -9,7 +9,7 @@ Code Quiz is a timed multiple-choice knowledge check web aplication. This app ru
 * Javascript
 
 ## Preview
-![plot]
+![plot](./assets/images/screen-shot.png?raw=true "Preview")
 
 ## Website
 https://LyleKilson.github.io/code-quiz/
